@@ -3,6 +3,7 @@ import Card from "../modules/Card";
 import { NewStory } from "../modules/NewPostInput";
 import { UserContext } from "../context/UserContext";
 import { get } from "../../utilities";
+import styles from './Trees.css';
 
 const Feed = () => {
   const [stories, setStories] = useState([]);
@@ -44,7 +45,7 @@ const Feed = () => {
           </div>
         </>
       ) : (
-        <div>
+        <div className={styles.noLoginMessage}>
           <center><h1>Welcome to OliveTheAbove!</h1></center>
           <h2>Peacefully Track, Discover, and Share Your Hobbies!</h2>
         </div>
