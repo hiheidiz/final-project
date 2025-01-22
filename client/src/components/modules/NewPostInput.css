@@ -1,0 +1,72 @@
+/* NewPostInput.css */
+
+/* Container for the input and button */
+.NewPostInput-container {
+  position: fixed;
+  bottom: var(--l); /* Adjust spacing from bottom */
+  right: var(--l); /* Adjust spacing from right */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Button styling */
+.NewPostInput-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  color: var(--white);
+  background-color: var(--primary);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.NewPostInput-button:hover {
+  background-color: var(--primary--dim);
+  transform: scale(1.05);
+}
+
+/* Input container styling */
+.NewPostInput-input-container {
+  display: none;
+  flex-direction: column;
+  background: var(--white);
+  padding: var(--s);
+  border-radius: var(--s);
+  margin-bottom: var(--s); /* Space between button and input */
+  width: 150px; /* Adjust width as needed */
+}
+
+/* Show input container on hover */
+.NewPostInput-container:hover .NewPostInput-input-container {
+  display: flex;
+}
+
+/* Input field styling */
+.NewPostInput-input {
+  width: 85%;
+  padding: var(--s);
+  border: var(--darkgrey) 1px solid;
+  border-radius: var(--xs);
+  margin-bottom: var(--s); /* Space between input and submit button */
+}
+
+/* Submit button styling */
+.NewPostInput-submit {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: var(--s) var(--m);
+  border-radius: var(--xs);
+  cursor: pointer;
+}
+
+.NewPostInput-submit:hover {
+  background-color: var(--primary--dim);
+}

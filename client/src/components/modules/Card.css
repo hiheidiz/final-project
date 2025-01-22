@@ -1,0 +1,34 @@
+/* Parent container to arrange the cards */
+.Cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three cards per row */
+  gap: var(--m); /* Space between cards */
+  margin-top: 20px;
+}
+
+
+/* Individual card styles */
+.Card-container {
+  flex: 0 0 calc(33.333% - var(--m)); /* Ensures 3 cards per row with spacing */
+  /* border: var(--darkgrey) 1px solid; */
+  /* border-radius: var(--xs); */
+  margin: 0; /* Remove extra margins for consistency */
+  box-sizing: border-box; /* Ensures padding/border is included in the width */
+  background-color: #f0f0f0;
+  border-radius: 20px;
+}
+
+/* Card content styles */
+.Card-story {
+  padding: var(--m) var(--l);
+}
+
+.Card-storyUser {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.Card-storyContent {
+  font-size: 40px;
+  margin: var(--s) 0 0;
+}
