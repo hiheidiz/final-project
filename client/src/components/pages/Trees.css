@@ -1,0 +1,23 @@
+.cedarville-cursive-regular {
+  font-family: "Cedarville Cursive", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.noLoginMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    font-family: 'Cedarville Cursive', serif;
+
+  }
+  
+  .noLoginMessage h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: 'Cedarville Cursive', serif;
+
+  }
+  
