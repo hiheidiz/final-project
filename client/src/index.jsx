@@ -4,7 +4,8 @@ import App from "./components/App";
 import Feed from "./components/pages/Trees";
 import NotFound from "./components/pages/NotFound";
 import Profile from "./components/pages/Profile";
-import StoryDetail from './components/pages/ProjectDetail'; // Component for individual story details
+import ProjectDetail from './components/modules/ProjectDetail'; // Component for individual project details
+import AllTrees from './components/pages/AllTrees';
 
 import {
   createBrowserRouter,
@@ -23,7 +24,8 @@ const router = createBrowserRouter(
     <Route errorElement={<NotFound />} element={<App />}>
       <Route path="/" element={<Feed />} />
       <Route path="/profile/:userId" element={<Profile />} />
-      <Route path="/story/:id" element={<StoryDetail />} />
+      <Route path="/project/:id" element={<ProjectDetail />} />
+      <Route path="/alltrees" element={<AllTrees />} />
     </Route>
   )
 );

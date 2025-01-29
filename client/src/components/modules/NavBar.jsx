@@ -20,8 +20,13 @@ const NavBar = (props) => {
         <Link to="/" className="NavBar-link">
           My Trees
         </Link>
-        {userId && (
+        {/* {userId && (
           <Link to={`/profile/${userId}`} className="NavBar-link">
+            All Trees
+          </Link>
+        )} */}
+        {userId && (
+          <Link to={`/alltrees`} className="NavBar-link">
             All Trees
           </Link>
         )}

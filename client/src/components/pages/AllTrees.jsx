@@ -1,27 +1,23 @@
 import React, { useState, useEffect, useContext } from "react";
 import Card from "../modules/Card";
-import { NewStory } from "../modules/NewPostInput";
+import { NewProject } from "../modules/NewPostInput";
 import { UserContext } from "../context/UserContext";
 import { get } from "../../utilities";
-import styles from './Trees.css';
 
-const Feed = () => {
-  const [stories, setStories] = useState([]);
+const AllTrees = () => {
+  const [projects, setProjects] = useState([]);
   const userId = useContext(UserContext);
 
   useEffect(() => {
-    document.title = "My Trees";
-    if (userId) {
-      get("/api/stories").then((storyObjs) => {
-        const userStories = storyObjs.filter((story) => story.creator_id === userId);
-        setStories(userStories);
-      });
-    }
-  }, [userId]);
+    document.title = "All Trees";
+    get("/api/projects").then((projectObjs) => {
+      setProjects(projectObjs); // Load all projects instead of filtering by user
+    });
+  }, []); // Removed userId dependency
 
-  const addNewStory = (storyObj) => {
-    if (storyObj.creator_id === userId) {
-      setStories([storyObj, ...stories]);
+  const addNewProject = (projectObj) => {
+    if (projectObj.creator_id) {
+      setProjects([projectObj, ...projects]);
     }
   };
 
@@ -29,29 +25,29 @@ const Feed = () => {
     <>
       {userId ? (
         <>
-          <NewStory addNewStory={addNewStory} />
-          <div className="Cards-wrapper">
-            {stories.length > 0 ? (
-              stories.map((storyObj) => (
-                <Card
-                  key={`Card_${storyObj._id}`}
-                  _id={storyObj._id}
-                  creator_name={storyObj.creator_name}
-                  creator_id={storyObj.creator_id}
-                  content={storyObj.content}
-                />
-              ))
-            ) : null}
-          </div>
+          <NewProject addNewProject={addNewProject} />
         </>
       ) : (
-        <div className={styles.noLoginMessage}>
+        <div>
           <center><h1>Welcome to OliveTheAbove!</h1></center>
           <h2>Peacefully Track, Discover, and Share Your Hobbies!</h2>
         </div>
       )}
+      <div className="Cards-wrapper">
+        {projects.length > 0 ? (
+          projects.map((projectObj) => (
+            <Card
+              key={`Card_${projectObj._id}`}
+              _id={projectObj._id}
+              creator_name={projectObj.creator_name}
+              creator_id={projectObj.creator_id}
+              content={projectObj.content}
+            />
+          ))
+        ) : null}
+      </div>
     </>
   );
 };
 
-export default Feed;
+export default AllTrees;

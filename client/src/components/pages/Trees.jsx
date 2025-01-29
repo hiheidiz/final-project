@@ -1,26 +1,26 @@
 import React, { useState, useEffect, useContext } from "react";
 import Card from "../modules/Card";
-import { NewStory } from "../modules/NewPostInput";
+import { NewProject } from "../modules/NewPostInput";
 import { UserContext } from "../context/UserContext";
 import { get } from "../../utilities";
 
 const Feed = () => {
-  const [stories, setStories] = useState([]);
+  const [projects, setProjects] = useState([]);
   const userId = useContext(UserContext);
 
   useEffect(() => {
     document.title = "My Trees";
     if (userId) {
-      get("/api/stories").then((storyObjs) => {
-        const userStories = storyObjs.filter((story) => story.creator_id === userId);
-        setStories(userStories);
+      get("/api/projects").then((projectObjs) => {
+        const userProjects = projectObjs.filter((project) => project.creator_id === userId);
+        setProjects(userProjects);
       });
     }
   }, [userId]);
 
-  const addNewStory = (storyObj) => {
-    if (storyObj.creator_id === userId) {
-      setStories([storyObj, ...stories]);
+  const addNewProject = (projectObj) => {
+    if (projectObj.creator_id === userId) {
+      setProjects([projectObj, ...projects]);
     }
   };
 
@@ -28,16 +28,16 @@ const Feed = () => {
     <>
       {userId ? (
         <>
-          <NewStory addNewStory={addNewStory} />
+          <NewProject addNewProject={addNewProject} />
           <div className="Cards-wrapper">
-            {stories.length > 0 ? (
-              stories.map((storyObj) => (
+            {projects.length > 0 ? (
+              projects.map((projectObj) => (
                 <Card
-                  key={`Card_${storyObj._id}`}
-                  _id={storyObj._id}
-                  creator_name={storyObj.creator_name}
-                  creator_id={storyObj.creator_id}
-                  content={storyObj.content}
+                  key={`Card_${projectObj._id}`}
+                  _id={projectObj._id}
+                  creator_name={projectObj.creator_name}
+                  creator_id={projectObj.creator_id}
+                  content={projectObj.content}
                 />
               ))
             ) : null}

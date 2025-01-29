@@ -10,33 +10,26 @@
 const express = require("express");
 
 // import models so we can interact with the database
-const Story = require("./models/story");
-const Comment = require("./models/comment");
+const Project = require("./models/project");
 const User = require("./models/user");
 const auth = require("./auth");
 
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
 
-router.get("/stories", (req, res) => {
+router.get("/projects", (req, res) => {
   // empty selector means get all documents
-  Story.find({}).then((stories) => res.send(stories));
+  Project.find({}).then((projects) => res.send(projects));
 });
 
-router.post("/story", (req, res) => {
-  const newStory = new Story({
+router.post("/project", (req, res) => {
+  const newProject = new Project({
     creator_id: req.user._id,
     creator_name: req.user.name,
     content: req.body.content,
   });
 
-  newStory.save().then((story) => res.send(story));
-});
-
-router.get("/comment", (req, res) => {
-  Comment.find({ parent: req.query.parent }).then((comments) => {
-    res.send(comments);
-  });
+  newProject.save().then((project) => res.send(project));
 });
 
 router.get("/user", (req, res) => {
@@ -45,16 +38,6 @@ router.get("/user", (req, res) => {
   });
 });
 
-router.post("/comment", (req, res) => {
-  const newComment = new Comment({
-    creator_id: req.user._id,
-    creator_name: req.user.name,
-    parent: req.body.parent,
-    content: req.body.content,
-  });
-
-  newComment.save().then((comment) => res.send(comment));
-});
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -75,4 +58,4 @@ router.all("*", (req, res) => {
 });
 
 module.exports = router;
-Story.deleteMany({})
+Project.deleteMany({})

@@ -10,8 +10,8 @@ import { post } from "../../utilities";
  *
  * Proptypes
  * @param {string} defaultText is the placeholder text
- * @param {string} storyId optional prop, used for comments
- * @param {({storyId, value}) => void} onSubmit: (function) triggered when this post is submitted, takes {storyId, value} as parameters
+ * @param {string} projectId optional prop, used for comments
+ * @param {({projectId, value}) => void} onSubmit: (function) triggered when this post is submitted, takes {projectId, value} as parameters
  */
 const NewPostInput = (props) => {
   const [value, setValue] = useState("");
@@ -57,42 +57,24 @@ const NewPostInput = (props) => {
   );
 };
 
-/**
- * New Comment is a New Post component for comments
- *
- * Proptypes
- * @param {string} defaultText is the placeholder text
- * @param {string} storyId to add comment to
- */
-const NewComment = (props) => {
-  const addComment = (value) => {
-    const body = { parent: props.storyId, content: value };
-    post("/api/comment", body).then((comment) => {
-      // display this comment on the screen
-      props.addNewComment(comment);
-    });
-  };
-
-  return <NewPostInput defaultText="New Comment" onSubmit={addComment} />;
-};
 
 /**
- * New Story is a New Post component for comments
+ * New Project is a New Post component for comments
  *
  * Proptypes
  * @param {string} defaultText is the placeholder text
  */
-const NewStory = (props) => {
-  const addStory = (value) => {
+const NewProject = (props) => {
+  const addProject = (value) => {
     const body = { content: value };
-    post("/api/story", body).then((story) => {
-      // display this story on the screen
-      props.addNewStory(story);
+    post("/api/project", body).then((project) => {
+      // display this project on the screen
+      props.addNewProject(project);
     });
   };
 
-  return <NewPostInput defaultText="Project Name" onSubmit={addStory} />;
+  return <NewPostInput defaultText="Project Name" onSubmit={addProject} />;
 };
 
 
-export { NewComment, NewStory };
+export {NewProject};
