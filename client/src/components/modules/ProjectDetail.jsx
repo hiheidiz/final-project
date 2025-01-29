@@ -59,7 +59,7 @@ const ProjectDetail = () => {
   return (
     <div className="page-container">
       <div className="content-box">
-        <h2>{projectTitle || "Project Details"}</h2>
+        <h2 style={{ fontFamily: 'Cedarville Cursive, cursive' }}>{projectTitle}</h2>
 
         <div className="project-content">
           <h3>Current Content:</h3>

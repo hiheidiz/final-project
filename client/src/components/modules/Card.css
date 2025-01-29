@@ -6,16 +6,14 @@
   margin-top: 20px;
 }
 
-
 /* Individual card styles */
 .Card-container {
   flex: 0 0 calc(33.333% - var(--m)); /* Ensures 3 cards per row with spacing */
-  /* border: var(--darkgrey) 1px solid; */
-  /* border-radius: var(--xs); */
   margin: 0; /* Remove extra margins for consistency */
   box-sizing: border-box; /* Ensures padding/border is included in the width */
   background-color: #f0f0f0;
   border-radius: 20px;
+  transition: transform 0.3s ease; /* Smooth transition for scaling */
 }
 
 /* Card content styles */
@@ -33,7 +31,12 @@
   margin: var(--s) 0 0;
 }
 
-/* Add this to your Card.css */
+/* Hover effect on the entire card */
+.Card-container:hover {
+  transform: scale(0.95); /* Shrink the card slightly */
+}
+
+/* Optional: Add transition to the image hover */
 .Card-container img {
   transition: transform 0.3s ease; /* Smooth transition for scaling */
 }

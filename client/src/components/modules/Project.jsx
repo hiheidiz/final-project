@@ -15,7 +15,15 @@ const Project = (props) => {
       {/* <Link to={`/profile/${props.creator_id}`} className="u-link u-bold"> */}
         {props.creator_name}
       {/* </Link> */}
-      <p className="Card-projectContent">{props.title}</p>
+      <p 
+        className="Card-projectContent" 
+        style={{
+          fontFamily: 'Cedarville Cursive, cursive',
+          fontSize: '2rem'  // Adjust the size as needed
+        }}
+      >
+        {props.title}
+      </p>
     </div>
   );
 };
