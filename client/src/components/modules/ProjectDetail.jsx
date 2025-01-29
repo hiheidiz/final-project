@@ -11,7 +11,7 @@ const ProjectDetail = () => {
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const response = await fetch(`http://localhost:5173/api/project/${id}`);
+        const response = await fetch(`https://olivetheabove.onrender.com/api/project/${id}`);
         if (response.ok) {
           const data = await response.json();
           setProjectTitle(data.title);
@@ -36,7 +36,7 @@ const ProjectDetail = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5173/api/project/${id}`, {
+      const response = await fetch(`https://olivetheabove.onrender.com/api/project/${id}`, {
         method: "POST", // Use POST for appending
         headers: {
           "Content-Type": "application/json",
