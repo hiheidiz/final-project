@@ -37,7 +37,7 @@ const Feed = () => {
                   _id={projectObj._id}
                   creator_name={projectObj.creator_name}
                   creator_id={projectObj.creator_id}
-                  content={projectObj.content}
+                  title={projectObj.title}
                 />
               ))
             ) : null}
@@ -47,6 +47,7 @@ const Feed = () => {
         <div>
           <center><h1>Welcome to OliveTheAbove!</h1></center>
           <h2>Peacefully Track, Discover, and Share Your Hobbies!</h2>
+          
         </div>
       )}
     </>

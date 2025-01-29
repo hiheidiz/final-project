@@ -41,7 +41,7 @@ const AllTrees = () => {
               _id={projectObj._id}
               creator_name={projectObj.creator_name}
               creator_id={projectObj.creator_id}
-              content={projectObj.content}
+              title={projectObj.title}
             />
           ))
         ) : null}

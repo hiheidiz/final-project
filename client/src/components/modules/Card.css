@@ -25,10 +25,10 @@
 
 .Card-projectUser {
   font-size: 20px;
-  font-weight: 600;
 }
 
 .Card-projectContent {
-  font-size: 40px;
+  font-size: 20px;
+  font-weight: 600;
   margin: var(--s) 0 0;
 }

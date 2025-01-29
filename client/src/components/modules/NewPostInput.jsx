@@ -66,7 +66,7 @@ const NewPostInput = (props) => {
  */
 const NewProject = (props) => {
   const addProject = (value) => {
-    const body = { content: value };
+    const body = { title: value };
     post("/api/project", body).then((project) => {
       // display this project on the screen
       props.addNewProject(project);
