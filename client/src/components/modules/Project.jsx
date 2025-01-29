@@ -12,9 +12,9 @@ import { Link } from "react-router-dom";
 const Project = (props) => {
   return (
     <div className="Card-project">
-      <Link to={`/profile/${props.creator_id}`} className="u-link u-bold">
+      {/* <Link to={`/profile/${props.creator_id}`} className="u-link u-bold"> */}
         {props.creator_name}
-      </Link>
+      {/* </Link> */}
       <p className="Card-projectContent">{props.title}</p>
     </div>
   );

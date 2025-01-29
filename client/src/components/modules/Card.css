@@ -32,3 +32,12 @@
   font-weight: 600;
   margin: var(--s) 0 0;
 }
+
+/* Add this to your Card.css */
+.Card-container img {
+  transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.Card-container img:hover {
+  transform: scale(1.1); /* Slightly increase the size */
+}

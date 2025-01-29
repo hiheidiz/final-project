@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Project from "./Project";
-import tree from "./image.png"
 import "./Card.css";
 import { Link } from "react-router-dom";
 
@@ -13,6 +12,23 @@ import { Link } from "react-router-dom";
  * @param {string} title of the project
  */
 const Card = (props) => {
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    // List of image filenames
+    const images = [
+      "/red.png",
+      "/green.png",
+      "/blue.png",
+      "/purple.png",
+    ];
+
+    // Randomly select an image
+    const randomImage = images[Math.floor(Math.random() * images.length)];
+
+    setImage(randomImage); // Set the random image filename
+  }, []);
+
   return (
     <div className="Card-container">
       <Project
@@ -22,7 +38,18 @@ const Card = (props) => {
         title={props.title}
       />
       <Link to={`/project/${props._id}`}>
-        <center><img src={tree} width="200" height="200"/></center>
+        <center>
+          {image ? (
+            <img
+              src={image} // Set image source dynamically
+              width="200"
+              height="200"
+              alt="Random"
+            />
+          ) : (
+            <p>Loading image...</p> // Display a loading message while selecting the image
+          )}
+        </center>
       </Link>
     </div>
   );
